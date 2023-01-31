@@ -21,7 +21,7 @@ export const CalendarGrid = () => {
       }
       {daysListForCalendar.map((day: IDay) => {
         return (
-          <li key={Math.random()} className="calendar__dayCell">
+          <li key={Math.random()} className="calendarGrid__dayCell">
             <DayCell day={day} />
           </li>
         );

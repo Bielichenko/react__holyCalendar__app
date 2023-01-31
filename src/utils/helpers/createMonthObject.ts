@@ -1,4 +1,4 @@
-import { IMonth } from '../../types/IMonth';
+import { IMonth } from '../../types/IMonthSelected';
 import { getMonthName } from './getMonthName';
 import { getMonthNumberString } from './getMonthNumberString';
 

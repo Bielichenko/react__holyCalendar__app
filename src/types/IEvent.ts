@@ -1,13 +1,9 @@
 export interface IEvent {
   id: string;
-  year: number;
-  monthIndex: number;
-  monthNumber: number;
-  day: string
   createdAt: string;
-  editedAt?: string;
+  editedAt : string | null;
   title: string;
-  description?: string;
+  description: string;
   beginDate: string;
-  beginTime? :string;
+  beginTime:string;
 }

@@ -1,11 +1,10 @@
-@import "../../utils/vars/vars.scss";
+@import "../../../utils/vars/vars.scss";
 
 .creatingEventForm {
   position: absolute;
   z-index: 1;
   left: 25px;
   top: 25px;
-  // transform: translate(-50%, -50%);
 
   display: flex;
   flex-direction: column;
@@ -32,7 +31,7 @@
   &__closeButton {
     align-self: end;
 
-    background-image: url(../../images/crossGrey.png);
+    background-image: url(../../../images/crossGrey.png);
     background-size: contain;
 
     width: 30px;
@@ -43,7 +42,7 @@
     // background-color: $color--grey;
 
     &:hover {
-      background-image: url(../../images/crossWhite.png);
+      background-image: url(../../../images/crossWhite.png);
     }
   }
 

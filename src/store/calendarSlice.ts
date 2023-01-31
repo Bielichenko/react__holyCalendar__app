@@ -2,7 +2,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IDateFilter } from '../types/IDateFilter';
 import { IEvent } from '../types/IEvent';
-import { IMonthSelected } from '../types/IMonth';
+import { IMonthSelected } from '../types/IMonthSelected';
 
 type calendar = {
   dateFilter: IDateFilter | null;

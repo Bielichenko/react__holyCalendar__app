@@ -1,5 +1,5 @@
 import { IDateFilter } from '../../types/IDateFilter';
-import { IMonthSelected } from '../../types/IMonth';
+import { IMonthSelected } from '../../types/IMonthSelected';
 import { createMonthObject } from './createMonthObject';
 
 export function createSelectedMonthObject(dateFilter: IDateFilter): IMonthSelected {

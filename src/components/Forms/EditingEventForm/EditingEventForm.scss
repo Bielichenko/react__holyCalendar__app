@@ -1,4 +1,4 @@
-@import "../../utils/vars/vars.scss";
+@import "../../../utils/vars/vars.scss";
 
 .editingEventForm {
   position: absolute;
@@ -45,19 +45,19 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url(../../images/binWhite.png);
+    background-image: url(../../../images/binWhite.png);
 
     cursor: pointer;
 
     transition: 300ms;
 
     &:hover {
-      background-image: url(../../images/binRed.png);
+      background-image: url(../../../images/binRed.png);
     }
   }
 
   &__close {
-    background-image: url(../../images/crossGrey.png);
+    background-image: url(../../../images/crossGrey.png);
     background-size: contain;
 
     width: 30px;
@@ -66,7 +66,7 @@
     transition: 300ms;
 
     &:hover {
-      background-image: url(../../images/crossWhite.png);
+      background-image: url(../../../images/crossWhite.png);
     }
   }
   &__formTitle {

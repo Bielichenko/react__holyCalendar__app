@@ -1,5 +1,5 @@
 import { IEvent } from '../../types/IEvent';
-import { IMonthSelected } from '../../types/IMonth';
+import { IMonthSelected } from '../../types/IMonthSelected';
 import { getDaysFromMonth } from './getDaysFromMonth';
 
 const daysAmountInCalendar = 42;

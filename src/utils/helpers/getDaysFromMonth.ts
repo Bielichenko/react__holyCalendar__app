@@ -1,6 +1,6 @@
 import { IDay } from '../../types/IDay';
 import { IEvent } from '../../types/IEvent';
-import { IMonth, IMonthSelected } from '../../types/IMonth';
+import { IMonth, IMonthSelected } from '../../types/IMonthSelected';
 import { makeDayObject } from './makeDateObject';
 
 export function getDaysFromMonth(

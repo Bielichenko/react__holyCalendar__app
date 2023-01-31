@@ -65,7 +65,7 @@ export const EditingEventForm: React.FC<props> = ({ editedEvent }) => {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const datePickerHandler = (date: any) => {
-    const beginDateString = getFullDateString(date.$d);
+    const beginDateString = getFullDateString(date.$d).split(' ')[0];
 
     setBeginDate(beginDateString);
   };

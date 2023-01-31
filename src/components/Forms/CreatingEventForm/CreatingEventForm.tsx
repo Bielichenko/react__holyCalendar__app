@@ -40,6 +40,7 @@ export const CreatingEventForm = () => {
       createdAt: fullDateString,
       beginDate,
       beginTime,
+      editedAt: null,
     };
 
     const updatedEvents: IEvent[] = [...userEvents, newEvent];
@@ -52,16 +53,20 @@ export const CreatingEventForm = () => {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const datePickerHandler = (date: any) => {
-    const beginDateString = getFullDateString(date.$d);
+    if (date) {
+      const beginDateString = getFullDateString(date.$d).split(' ')[0];
 
-    setBeginDate(beginDateString);
+      setBeginDate(beginDateString);
+    }
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const dateTimeHandler = (date: any) => {
-    const beginTimeString = getFullDateString(date.$d);
+    if (date) {
+      const beginTimeString = getFullDateString(date.$d);
 
-    setBeginTime(beginTimeString);
+      setBeginTime(beginTimeString);
+    }
   };
 
   return (
