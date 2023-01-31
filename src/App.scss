@@ -10,7 +10,7 @@
 
   min-width: 1000px;
   min-height: 100vh;
-  padding: 25px;
+  padding: 15px;
 
   color: #eaeaea;
   background-color: $color--black;
@@ -24,3 +24,13 @@
     margin-bottom: 15px;
   }
 }
+
+.resource {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+
+  color: grey;
+  text-decoration: none;
+}
+
