@@ -31,15 +31,13 @@
   &__closeButton {
     align-self: end;
 
-    background-image: url(../../../images/crossGrey.png);
-    background-size: contain;
-
     width: 30px;
     height: 30px;
 
-    transition: 300ms;
+    background-image: url(../../../images/crossGrey.png);
+    background-size: contain;
 
-    // background-color: $color--grey;
+    transition: 300ms;
 
     &:hover {
       background-image: url(../../../images/crossWhite.png);
