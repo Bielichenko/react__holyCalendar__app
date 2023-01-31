@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { IMonth } from '../../types/IMonth';
 import { getMonthName } from './getMonthName';
 import { getMonthNumberString } from './getMonthNumberString';

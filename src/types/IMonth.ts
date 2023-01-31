@@ -1,4 +1,4 @@
-export interface IMonthRoot {
+export interface IMonthSelected {
   year: number,
   monthIndex: number,
   monthNumber: number,

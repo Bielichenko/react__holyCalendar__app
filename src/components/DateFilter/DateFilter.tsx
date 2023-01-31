@@ -5,11 +5,11 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { MonthPicker } from '@mui/x-date-pickers/MonthPicker';
 import { YearPicker } from '@mui/x-date-pickers/YearPicker';
-import { createCurrMonthObject } from '../../utils/helpers/createCurrMonthObject';
 import { setDateFilterToLS } from '../../utils/helpers/setDateFilterToLS';
 import { useAppDispatch, useAppSelector } from '../../hook';
 import { setDateFilter, setSelectedMonth } from '../../store/calendarSlice';
 import { createDateFilter } from '../../utils/helpers/createDateFilter';
+import { createSelectedMonthObject } from '../../utils/helpers/createSelectedMonthObject';
 
 import './DateFilter.scss';
 
@@ -26,7 +26,7 @@ export const DateFilter = () => {
 
   useEffect(() => {
     if (dateFilter) {
-      const newSelectedMonth = createCurrMonthObject(dateFilter);
+      const newSelectedMonth = createSelectedMonthObject(dateFilter);
 
       setDatePicker(dayjs(newSelectedMonth.fullDateReverse));
       dispatch(setSelectedMonth(newSelectedMonth));

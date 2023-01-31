@@ -1,46 +1,42 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-console */
-/*eslint-disable*/
-import { IDay } from '../../types/IDay';
 import { IEvent } from '../../types/IEvent';
-import { IMonth, IMonthRoot } from '../../types/IMonth';
+import { IMonthSelected } from '../../types/IMonth';
 import { getDaysFromMonth } from './getDaysFromMonth';
 
 const daysAmountInCalendar = 42;
 
-export function getDaysList(currMonth: IMonthRoot | null, userEvents: IEvent[]) {
-  if (!currMonth) {
-    return []
+export function getDaysList(selectedMonth: IMonthSelected | null, userEvents: IEvent[]) {
+  if (!selectedMonth) {
+    return [];
   }
-  
+
   const daysFromCurrentMonth = getDaysFromMonth(
-    currMonth,
-    'currentMonth',
-    +currMonth.daysAmount,
+    selectedMonth,
+    'selectedMonth',
+    selectedMonth.daysAmount,
     userEvents,
   );
 
-  const firstDayOfWeekOfCurrentMonth = +daysFromCurrentMonth[0].dayOfWeekNumber;
-  // const lastDayOfWeekOfCurrentMonth
-  //   = +daysFromCurrentMonth[daysFromCurrentMonth.length - 1].dayNumber;
+  const firstDayOfWeekOfCurrentMonth = daysFromCurrentMonth[0].dayOfWeekNumber;
+  const needDaysFromPrevMonth = firstDayOfWeekOfCurrentMonth - 1;
 
   const daysFromPreviousMonth = getDaysFromMonth(
-    currMonth.prevMonth,
+    selectedMonth.prevMonth,
     'previousMonth',
-    firstDayOfWeekOfCurrentMonth - 1,
+    needDaysFromPrevMonth,
     userEvents,
   );
 
-  const needDaysFromNextMonth = daysAmountInCalendar - daysFromCurrentMonth.length - daysFromPreviousMonth.length
+  const needDaysFromNextMonth
+  = daysAmountInCalendar - daysFromCurrentMonth.length - daysFromPreviousMonth.length;
 
   const daysFromNextMonth = getDaysFromMonth(
-    currMonth.nextMonth,
+    selectedMonth.nextMonth,
     'nextMonth',
     needDaysFromNextMonth,
     userEvents,
   );
 
   const daysList = [...daysFromPreviousMonth, ...daysFromCurrentMonth, ...daysFromNextMonth];
-  
+
   return daysList;
 }

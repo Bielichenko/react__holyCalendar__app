@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect } from 'react';
-import { Calendar } from './components/Calendar/Calendar';
+import { Calendar } from './components/CalendarGrid/CalendarGrid';
 import { DateFilter } from './components/DateFilter/DateFilter';
 import { getDataFromServer } from './utils/helpers/getDataFromServer';
 import { getDateFilterFromLS } from './utils/helpers/getDateFilterFromLS';
@@ -29,10 +29,10 @@ export const App: React.FC = () => {
           <CreatingEventButton />
           <DateFilter />
         </header>
-        {/* <main className="app__main">
+        <main className="app__main">
           <Calendar />
         </main>
-        <a target="_blank" href="https://icons8.com/" className="resource" rel="noreferrer">Icons resource link</a> */}
+        <a target="_blank" href="https://icons8.com/" className="resource" rel="noreferrer">Icons resource link</a>
       </div>
     )
   );

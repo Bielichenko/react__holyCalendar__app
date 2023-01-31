@@ -2,11 +2,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IDateFilter } from '../types/IDateFilter';
 import { IEvent } from '../types/IEvent';
-import { IMonthRoot } from '../types/IMonth';
+import { IMonthSelected } from '../types/IMonth';
 
 type calendar = {
   dateFilter: IDateFilter | null;
-  selectedMonth: IMonthRoot | null;
+  selectedMonth: IMonthSelected | null;
   userEvents: IEvent[];
   isCreatingEvent: boolean;
   editedEvent: IEvent | null;
@@ -27,7 +27,7 @@ const calendarSlice = createSlice({
     setDateFilter(state, action: PayloadAction<IDateFilter>) {
       state.dateFilter = action.payload;
     },
-    setSelectedMonth(state, action: PayloadAction<IMonthRoot>) {
+    setSelectedMonth(state, action: PayloadAction<IMonthSelected>) {
       state.selectedMonth = action.payload;
     },
     setUserEvents(state, action: PayloadAction<IEvent[]>) {

@@ -1,5 +1,5 @@
-export function getDayOfWeekNumber(dayOfWeek: string | number) {
-  switch (dayOfWeek) {
+export function getDayOfWeekNumber(dayOfWeekName: string) {
+  switch (dayOfWeekName) {
     case 'Mon':
       return 1;
     case 'Tue':
