@@ -2,7 +2,7 @@ import React from 'react';
 import { getDaysList } from '../../utils/helpers/getDaysList';
 import { useAppSelector } from '../../hook';
 import { IDay } from '../../types/IDay';
-import { CalendarCell } from '../CalendarCell/CalendarCell';
+import { DayCell } from '../DayCell/DayCell';
 import { EditingEventForm } from '../Forms/EditingEventForm/EditingEventForm';
 
 import './CalendarGrid.scss';
@@ -22,7 +22,7 @@ export const CalendarGrid = () => {
       {daysListForCalendar.map((day: IDay) => {
         return (
           <li key={Math.random()} className="calendar__dayCell">
-            <CalendarCell day={day} />
+            <DayCell day={day} />
           </li>
         );
       })}

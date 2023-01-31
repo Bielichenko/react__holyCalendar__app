@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { IEvent } from '../../types/IEvent';
 
 export function sortEventsByTime(dayEvents: IEvent[]) {
@@ -17,8 +16,6 @@ export function sortEventsByTime(dayEvents: IEvent[]) {
 
       sumMinutesB = parseInt(hoursB, 10) * 60 + parseInt(minutesB, 10);
     }
-
-    console.log(sumMinutesA, sumMinutesB, 'sumMinutesB');
 
     return sumMinutesA - sumMinutesB;
   });
