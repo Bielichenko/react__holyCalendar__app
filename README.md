@@ -8,7 +8,7 @@ Main tech Stack:
 + React-redux: 8.0.5,
 + Material UI: 5.11.6,
 
-DEMO LINK: https://bielichenko.github.io/react__calendar__app/
+DEMO LINK:  https://bielichenko.github.io/react__holyCalendar__app/
 
 ## Task description
 Create App Calendar of events.
