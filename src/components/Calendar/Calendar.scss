@@ -1,0 +1,25 @@
+@import "../../utils/vars/vars.scss";
+
+.calendar {
+  // display: flex;
+  // flex-direction: row;
+  // flex-wrap: wrap;
+
+  display: grid;
+  grid-template-columns: repeat(7, 110px);
+
+  border: 1px solid $color--grey;
+
+  &__dayCell {
+    list-style: none;
+  }
+}
+
+.resource {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+
+  color: $color--grey;
+  text-decoration: none;
+}

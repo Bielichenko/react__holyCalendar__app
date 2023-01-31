@@ -1,3 +1,26 @@
-.starter {
-  font-size: 18px;
+@import './utils/vars/vars.scss';
+
+.app {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  min-width: 1000px;
+  min-height: 100vh;
+  padding: 25px;
+
+  color: #eaeaea;
+  background-color: $color--black;
+  font-family: Montserrat, sans-serif;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+
+    width: calc(7 * 110px + 2px);
+    margin-bottom: 15px;
+  }
 }
