@@ -3,21 +3,21 @@ import { getDaysList } from '../../utils/helpers/getDaysList';
 import { useAppSelector } from '../../hook';
 import { IDay } from '../../types/IDay';
 import { CalendarCell } from '../CalendarCell/CalendarCell';
-import { UpdateForm } from '../Forms/UpdateForm/UpdateForm';
+import { EditingEventForm } from '../Forms/EditingEventForm/EditingEventForm';
 
 import './CalendarGrid.scss';
 
 export const CalendarGrid = () => {
-  const selectedMonth = useAppSelector(state => state.calendar.selectedMonth)
-  const userEvents = useAppSelector(state => state.calendar.userEvents)
-  const editingEvent = useAppSelector (state => state.calendar.editedEvent)
-  const daysListForCalendar = getDaysList(selectedMonth, userEvents)
+  const selectedMonth = useAppSelector(state => state.calendar.selectedMonth);
+  const userEvents = useAppSelector(state => state.calendar.userEvents);
+  const editedEvent = useAppSelector(state => state.calendar.editedEvent);
+  const daysListForCalendar = getDaysList(selectedMonth, userEvents);
 
   return (
     <ul className="calendarGrid">
       {
-        editingEvent
-        && (<UpdateForm editingEvent={editingEvent}/> )
+        editedEvent
+        && (<EditingEventForm editedEvent={editedEvent} />)
       }
       {daysListForCalendar.map((day: IDay) => {
         return (

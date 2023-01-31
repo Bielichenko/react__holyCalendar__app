@@ -1,11 +1,10 @@
 @import "../../utils/vars/vars.scss";
 
-.editEventForm {
+.editingEventForm {
   position: absolute;
   z-index: 1;
   left: 25px;
   top: 25px;
-  // transform: translate(-50%, -50%);
 
   display: flex;
   flex-direction: column;
@@ -65,8 +64,6 @@
     height: 30px;
 
     transition: 300ms;
-
-    // background-color: $color--grey;
 
     &:hover {
       background-image: url(../../images/crossWhite.png);

@@ -1,14 +1,13 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect } from 'react';
-import { Calendar } from './components/CalendarGrid/CalendarGrid';
+import { CalendarGrid } from './components/CalendarGrid/CalendarGrid';
 import { DateFilter } from './components/DateFilter/DateFilter';
 import { getDataFromServer } from './utils/helpers/getDataFromServer';
 import { getDateFilterFromLS } from './utils/helpers/getDateFilterFromLS';
 import { useAppDispatch, useAppSelector } from './hook';
 import { setDateFilter, setUserEvents } from './store/calendarSlice';
+import { CreatingEventButton } from './components/CreatingEventButton/CreatingEventButton';
 
 import './App.scss';
-import { CreatingEventButton } from './components/CreatingEventButton/CreatingEventButton';
 
 export const App: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -30,7 +29,7 @@ export const App: React.FC = () => {
           <DateFilter />
         </header>
         <main className="app__main">
-          <Calendar />
+          <CalendarGrid />
         </main>
         <a target="_blank" href="https://icons8.com/" className="resource" rel="noreferrer">Icons resource link</a>
       </div>

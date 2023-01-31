@@ -1,56 +1,50 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import Button from '@mui/material/Button';
-import { StaticTimePicker } from '@mui/x-date-pickers/StaticTimePicker';
 import Stack from '@mui/material/Stack';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
-import InputAdornment from '@mui/material/InputAdornment';
 import { useDispatch } from 'react-redux';
-import { getDateString } from '../../../utils/helpers/getFullDateString';
-import { getTimeString } from '../../../utils/helpers/getTimeString';
+import { getFullDateString } from '../../../utils/helpers/getFullDateString';
 import { sendDataToServer } from '../../../utils/helpers/sendDataToServer';
 import { useAppSelector } from '../../../hook';
-import { setUserEvents, setEditingEvent } from '../../../store/calendarSlice';
+import { setUserEvents, setEditedEvent } from '../../../store/calendarSlice';
 import { IEvent } from '../../../types/IEvent';
 
-import './UpdateForm.scss';
-import { getBeginTimeString } from '../../../utils/helpers/getTimeString';
+import './EditingEventForm.scss';
 
 interface props {
-  editingEvent: IEvent
+  editedEvent: IEvent
 }
 
-export const UpdateForm: React.FC<props> = ({ editingEvent }) => {
+export const EditingEventForm: React.FC<props> = ({ editedEvent }) => {
   const dispatch = useDispatch();
-  const usersEvent = useAppSelector(state => state.calendar.userEvents);
-  const [title, setTitle] = useState(editingEvent.title);
-  const [description, setDescription] = useState(editingEvent.description);
-  const [beginDate, setBeginDate] = useState<any>(editingEvent.beginDate);
-  const [beginTime, setBeginTime] = useState(editingEvent.beginTime);
+  const userEvents = useAppSelector(state => state.calendar.userEvents);
+  const [title, setTitle] = useState(editedEvent.title);
+  const [description, setDescription] = useState(editedEvent.description);
+  const [beginDate, setBeginDate] = useState(editedEvent.beginDate);
+  const [beginTime, setBeginTime] = useState(editedEvent.beginTime);
 
   useEffect(() => {
-    setTitle(editingEvent.title);
-    setDescription(editingEvent.description);
-    setBeginDate(editingEvent.beginDate);
-    setBeginTime(editingEvent.beginTime);
-  }, [editingEvent]);
+    setTitle(editedEvent.title);
+    setDescription(editedEvent.description);
+    setBeginDate(editedEvent.beginDate);
+    setBeginTime(editedEvent.beginTime);
+  }, [editedEvent]);
 
-  const closeEvent = () => {
-    dispatch(setEditingEvent(null));
+  const closeForm = () => {
+    dispatch(setEditedEvent(null));
   };
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
 
-    const dateString = getDateString(new Date());
+    const dateString = getFullDateString(new Date());
 
     const updatedEvent: IEvent = {
-      ...editingEvent,
+      ...editedEvent,
       title,
       description,
       editedAt: dateString,
@@ -58,77 +52,78 @@ export const UpdateForm: React.FC<props> = ({ editingEvent }) => {
       beginTime,
     };
 
-    const notUpdatedEvents = usersEvent
-      .filter(eventFromStorage => eventFromStorage.id !== editingEvent?.id);
+    const notEditedEvents = userEvents
+      .filter(userEvent => userEvent.id !== editedEvent.id);
 
-    const updatedEvents: IEvent[] = [...notUpdatedEvents, updatedEvent];
+    const updatedEvents: IEvent[] = [...notEditedEvents, updatedEvent];
 
     dispatch(setUserEvents(updatedEvents));
     sendDataToServer(updatedEvents);
 
-    closeEvent();
+    closeForm();
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const datePickerHandler = (date: any) => {
-    const beginDateString = getDateString(date.$d);
+    const beginDateString = getFullDateString(date.$d);
 
     setBeginDate(beginDateString);
   };
 
-  const dateTimeHandler = (time: any) => {
-    const beginTimeString = getBeginTimeString(time.$d);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const timePickerHandler = (time: any) => {
+    const beginTimeString = getFullDateString(time.$d);
 
     setBeginTime(beginTimeString);
   };
 
   const deleteEvent = () => {
-    const updatedEvents = usersEvent.filter(event => event.id !== editingEvent.id);
+    const updatedEvents = userEvents.filter(event => event.id !== editedEvent.id);
 
     dispatch(setUserEvents(updatedEvents));
 
-    closeEvent();
+    closeForm();
   };
 
   return (
-    <form className="editEventForm" onSubmit={handleSubmit}>
-      <div className="editEventForm__header">
-        <div className="editEventForm__buttons">
+    <form className="editingEventForm" onSubmit={handleSubmit}>
+      <div className="editingEventForm__header">
+        <div className="editingEventForm__buttons">
           <div
-            className="editEventForm__bin"
+            className="editingEventForm__bin"
             onClick={() => deleteEvent()}
             onKeyUp={() => deleteEvent()}
             tabIndex={0}
             role="button"
           >
-
           </div>
           <div
-            className="editEventForm__close"
-            onClick={() => closeEvent()}
-            onKeyUp={() => closeEvent()}
+            className="editingEventForm__close"
+            onClick={() => closeForm()}
+            onKeyUp={() => closeForm()}
             tabIndex={0}
             role="button"
           >
           </div>
         </div>
-        <h2 className="editEventForm__formTitle">
+        <h2 className="editingEventForm__formTitle">
           Edit event
         </h2>
-        <p className="editEventForm__createdAt">
+        <p className="editingEventForm__createdAt">
           Created at:&nbsp;
-          {editingEvent.createdAt}
+          {editedEvent.createdAt}
         </p>
         {
-          editingEvent.editedAt
+          editedEvent.editedAt
         && (
-          <p className="editEventForm__updatedAt">
+          <p className="editingEventForm__updatedAt">
             Last updated at:&nbsp;
-            {editingEvent?.editedAt}
+            {editedEvent.editedAt}
           </p>
         )
         }
       </div>
-      <div className="editEventForm__main">
+      <div className="editingEventForm__main">
         <Stack direction="column" spacing={2}>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <Stack spacing={1}>
@@ -167,7 +162,7 @@ export const UpdateForm: React.FC<props> = ({ editingEvent }) => {
               <TimePicker
                 label="Time"
                 value={beginTime}
-                onChange={dateTimeHandler}
+                onChange={timePickerHandler}
                 renderInput={(params) => (
                   <TextField
                     {...params}
