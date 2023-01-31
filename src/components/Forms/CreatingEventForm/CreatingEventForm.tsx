@@ -11,7 +11,6 @@ import { getFullDateString } from '../../../utils/helpers/getFullDateString';
 import { sendDataToServer } from '../../../utils/helpers/sendDataToServer';
 import { useAppSelector } from '../../../hook';
 import { IEvent } from '../../../types/IEvent';
-import { getTimeString } from '../../../utils/helpers/getTimeString';
 import { setIsCreatingEvent, setUserEvents } from '../../../store/calendarSlice';
 
 import './CreatingEventForm.scss';
@@ -51,14 +50,16 @@ export const CreatingEventForm = () => {
     closeForm();
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const datePickerHandler = (date: any) => {
     const beginDateString = getFullDateString(date.$d);
 
     setBeginDate(beginDateString);
   };
 
-  const dateTimeHandler = (time: any) => {
-    const beginTimeString = getTimeString(time.$d);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const dateTimeHandler = (date: any) => {
+    const beginTimeString = getFullDateString(date.$d);
 
     setBeginTime(beginTimeString);
   };

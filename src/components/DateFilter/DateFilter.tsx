@@ -1,31 +1,22 @@
-/* eslint-disable no-console */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useEffect } from 'react';
-
 import dayjs, { Dayjs } from 'dayjs';
 import Grid from '@mui/material/Grid';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { CalendarPicker } from '@mui/x-date-pickers/CalendarPicker';
 import { MonthPicker } from '@mui/x-date-pickers/MonthPicker';
 import { YearPicker } from '@mui/x-date-pickers/YearPicker';
-
 import { createCurrMonthObject } from '../../utils/helpers/createCurrMonthObject';
 import { setDateFilterToLS } from '../../utils/helpers/setDateFilterToLS';
 import { useAppDispatch, useAppSelector } from '../../hook';
-import { setCurrMonth, setDateFilter } from '../../store/calendarSlice';
-import { IDateFilter } from '../../types/IDateFilter';
-import { IMonthRoot } from '../../types/IMonth';
-import arrowGrey from '../../images/arrowGrey.png';
-import arrowWhite from '../../images/arrowWhite.png';
+import { setDateFilter, setSelectedMonth } from '../../store/calendarSlice';
+import { createDateFilter } from '../../utils/helpers/createDateFilter';
 
 import './DateFilter.scss';
-import { createDateFilter } from '../../utils/helpers/createDateFilter';
 
 export const DateFilter = () => {
   const dispatch = useAppDispatch();
   const dateFilter = useAppSelector(state => state.calendar.dateFilter);
-  const selectedMonth = useAppSelector(state => state.calendar.currMonth);
+  const selectedMonth = useAppSelector(state => state.calendar.selectedMonth);
 
   const initialValueForDatePicker = selectedMonth ? selectedMonth.fullDateReverse : null;
   const [datePicker, setDatePicker] = useState<Dayjs | null>(dayjs(initialValueForDatePicker));
@@ -38,11 +29,11 @@ export const DateFilter = () => {
       const newSelectedMonth = createCurrMonthObject(dateFilter);
 
       setDatePicker(dayjs(newSelectedMonth.fullDateReverse));
-      dispatch(setCurrMonth(newSelectedMonth));
+      dispatch(setSelectedMonth(newSelectedMonth));
     }
   }, [dateFilter]);
 
-  const next = () => {
+  const nextMonthHandler = () => {
     if (dateFilter) {
       const selectedMonthIndex = dateFilter.monthIndex;
       const selectedYear = dateFilter.year;
@@ -54,7 +45,7 @@ export const DateFilter = () => {
     }
   };
 
-  const prev = () => {
+  const prevMonthHandler = () => {
     if (dateFilter) {
       const selectedMonthIndex = dateFilter.monthIndex;
       const selectedYear = dateFilter.year;
@@ -66,7 +57,7 @@ export const DateFilter = () => {
     }
   };
 
-  const datePickerHandler = (newDate: any) => {
+  const datePickerHandler = (newDate: Dayjs) => {
     if (newDate) {
       const year = newDate.year();
       const month = newDate.month();
@@ -84,8 +75,8 @@ export const DateFilter = () => {
       <div className="dateFilter">
         <div
           className="dateFilter__arrow dateFilter__arrow--left"
-          onClick={() => prev()}
-          onKeyUp={() => prev()}
+          onClick={() => prevMonthHandler()}
+          onKeyUp={() => prevMonthHandler()}
           tabIndex={0}
           role="button"
         >
@@ -93,8 +84,8 @@ export const DateFilter = () => {
         <p className="dateFilter__selectedDate">{selectedMonth.dateWithMonthName}</p>
         <div
           className="dateFilter__arrow dateFilter__arrow--right"
-          onClick={() => next()}
-          onKeyUp={() => next()}
+          onClick={() => nextMonthHandler()}
+          onKeyUp={() => nextMonthHandler()}
           tabIndex={0}
           role="button"
         >

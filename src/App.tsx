@@ -27,7 +27,7 @@ export const App: React.FC = () => {
       <div className="app">
         <header className="app__header">
           <CreatingEventButton />
-          {/* <DateFilter /> */}
+          <DateFilter />
         </header>
         {/* <main className="app__main">
           <Calendar />
