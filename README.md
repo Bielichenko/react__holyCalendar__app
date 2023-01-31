@@ -1,4 +1,4 @@
-# React__calendar__app
+# React__holyCalendar__app
 Hi! This is my test task.
 
 Main tech Stack: 
@@ -11,8 +11,8 @@ Main tech Stack:
 DEMO LINK: https://bielichenko.github.io/react__calendar__app/
 
 ## Task description
-App Calendar of events.
-New user of the application
+Create App Calendar of events.
+New user of the application:
 1. Goes to the application page and sees a page that consists of:
 - Form opening button.
 - Filter by date. By default, the current month is selected.
@@ -30,7 +30,8 @@ The cell includes:
 4. Editing/deleting events
   Clicking the event opens the completed form in editing mode. It is on the form
   created at/ updated at the "save" button updates the event and closes the form
-  Requirements:
+
+Requirements:
 1. Do not use ready-made calendars.
 2. The application saves the state of the filters after reloading the page
 3. The application uses localstorage as data storage. Provide a replacement
