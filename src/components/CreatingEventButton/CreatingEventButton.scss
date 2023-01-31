@@ -1,12 +1,10 @@
 @import '../../utils/vars/vars.scss';
 
-.eventAdderButton {
-  &__plus {
+.creatingEventButton {
+  &__plusButton {
     height: 25px;
     width: 25px;
 
-    // border: 1px solid rgb(199, 236, 139);
-    // box-shadow: 2px 1px 3px white;
     border: none;
     color: white;
     border-radius: 50%;

@@ -1,12 +1,9 @@
-/* eslint-disable no-console */
 import { getMonthNumberString } from './getMonthNumberString';
 
-export function getDateString(date: Date) {
+export function getFullDateString(date: Date) {
   const dayString = date.toString();
   const monthIndex = date.getMonth();
   const dayArray: (string)[] = dayString.split(' ');
-
-  console.log(dayArray, 'dayArray');
 
   const [, , dayNumber, year, time] = dayArray;
   const monthNumberString = getMonthNumberString(monthIndex);

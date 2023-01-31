@@ -1,26 +1,23 @@
-/* eslint-disable*/
-
+/* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { createCurrMonthObject } from '../utils/helpers/createCurrMonthObject';
-import { getDataFromServer } from '../utils/helpers/getDataFromServer';
 import { IDateFilter } from '../types/IDateFilter';
 import { IEvent } from '../types/IEvent';
 import { IMonthRoot } from '../types/IMonth';
 
 type calendar = {
   dateFilter: IDateFilter | null;
-  currMonth: IMonthRoot | null;
+  selectedMonth: IMonthRoot | null;
   userEvents: IEvent[];
-  isAddingEvent: boolean;
-  editingEvent: IEvent | null;
+  isCreatingEvent: boolean;
+  editedEvent: IEvent | null;
 };
 
 const initialState: calendar = {
   dateFilter: null,
-  currMonth: null,
+  selectedMonth: null,
   userEvents: [],
-  isAddingEvent: false,
-  editingEvent: null,
+  isCreatingEvent: false,
+  editedEvent: null,
 };
 
 const calendarSlice = createSlice({
@@ -30,27 +27,27 @@ const calendarSlice = createSlice({
     setDateFilter(state, action: PayloadAction<IDateFilter>) {
       state.dateFilter = action.payload;
     },
-    setCurrMonth(state, action: PayloadAction<IMonthRoot>) {
-      state.currMonth = action.payload;
+    setSelectedMonth(state, action: PayloadAction<IMonthRoot>) {
+      state.selectedMonth = action.payload;
     },
     setUserEvents(state, action: PayloadAction<IEvent[]>) {
       state.userEvents = action.payload;
     },
-    setIsAddingEvent(state, action: PayloadAction<boolean>) {
-      state.isAddingEvent = action.payload;
+    setIsCreatingEvent(state, action: PayloadAction<boolean>) {
+      state.isCreatingEvent = action.payload;
     },
-    setEditingEvent(state, action: PayloadAction<IEvent | null>) {
-      state.editingEvent = action.payload;
+    setEditedEvent(state, action: PayloadAction<IEvent | null>) {
+      state.editedEvent = action.payload;
     },
   },
 });
 
 export const {
   setDateFilter,
-  setCurrMonth,
+  setSelectedMonth,
   setUserEvents,
-  setIsAddingEvent,
-  setEditingEvent,
+  setIsCreatingEvent,
+  setEditedEvent,
 } = calendarSlice.actions;
 
 export default calendarSlice.reducer;

@@ -1,10 +1,12 @@
 /* eslint-disable no-console */
+export function getTimeString(
+  dateObject: any,
+) {
+  const dateString = dateObject.toString();
+  const [, , date, year, time] = dateString.split(' ');
+  const monthNumber = +dateObject.getMonth() + 1;
 
-export function getTimeString(time: any) {
-  console.log(time, 'time');
+  const beginTimeString = `${year}-${monthNumber}-${date} ${time.slice(0, 5)}`;
 
-  const hour = time.$H;
-  const minutes = time.$m;
-
-  return `${hour}:${minutes}`;
+  return beginTimeString;
 }

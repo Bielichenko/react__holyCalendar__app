@@ -1,6 +1,6 @@
 @import "../../utils/vars/vars.scss";
 
-.newEventForm {
+.creatingEventForm {
   position: absolute;
   z-index: 1;
   left: 25px;
@@ -29,7 +29,7 @@
     color: $color--grey;
   }
 
-  &__close {
+  &__closeButton {
     align-self: end;
 
     background-image: url(../../images/crossGrey.png);

@@ -2,7 +2,7 @@
 
 import { IEvent } from '../../types/IEvent';
 // import { getCurrentDate } from './getCurrentDate';
-import { getDateString } from './getDateString';
+import { getDateString } from './getFullDateString';
 import { getDayOfWeekNumber } from './getDayOfWeekNumber';
 import { getMonthNumberString } from './getMonthNumberString';
 

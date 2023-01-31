@@ -11,15 +11,15 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import InputAdornment from '@mui/material/InputAdornment';
 import { useDispatch } from 'react-redux';
-import { getDateString } from '../../utils/helpers/getDateString';
-import { getTimeString } from '../../utils/helpers/getTimeString';
-import { sendDataToServer } from '../../utils/helpers/sendDataToServer';
-import { useAppSelector } from '../../hook';
-import { setUserEvents, setEditingEvent } from '../../store/calendarSlice';
-import { IEvent } from '../../types/IEvent';
+import { getDateString } from '../../../utils/helpers/getFullDateString';
+import { getTimeString } from '../../../utils/helpers/getTimeString';
+import { sendDataToServer } from '../../../utils/helpers/sendDataToServer';
+import { useAppSelector } from '../../../hook';
+import { setUserEvents, setEditingEvent } from '../../../store/calendarSlice';
+import { IEvent } from '../../../types/IEvent';
 
 import './UpdateForm.scss';
-import { getBeginTimeString } from '../../utils/helpers/getBeginTimeString';
+import { getBeginTimeString } from '../../../utils/helpers/getTimeString';
 
 interface props {
   editingEvent: IEvent

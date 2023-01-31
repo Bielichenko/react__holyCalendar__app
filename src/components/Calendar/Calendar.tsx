@@ -9,7 +9,7 @@ import { useAppDispatch, useAppSelector } from '../../hook';
 import { setEditingEvent } from '../../store/calendarSlice';
 import { IDay } from '../../types/IDay';
 import { CalendarCell } from '../CalendarCell/CalendarCell';
-import { UpdateForm } from '../UpdateForm/UpdateForm';
+import { UpdateForm } from '../Forms/UpdateForm/UpdateForm';
 
 import './Calendar.scss';
 
