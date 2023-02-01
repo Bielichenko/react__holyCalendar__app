@@ -24,15 +24,15 @@ export const App: React.FC = () => {
   return (
     dateFilter && (
       <div className="app">
-        <main className="app__container">
-          <div className="app__header">
+        <div className="app__container">
+          <header className="app__header">
             <CreatingEventButton />
             <DateFilter />
-          </div>
-          <div className="app__main">
+          </header>
+          <main className="app__main">
             <CalendarGrid />
-          </div>
-        </main>
+          </main>
+        </div>
         <a target="_blank" href="https://icons8.com/" className="resource" rel="noreferrer">Icons resource link</a>
       </div>
     )

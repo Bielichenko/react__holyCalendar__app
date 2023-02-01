@@ -10,11 +10,7 @@
   align-items: center;
 
   min-height: 100vh;
-  padding: 20px;
-
-  @include onMobile {
-    padding: 10px 10px 15px;
-  };
+  padding: 10px 10px 15px;
 
   color: $color--grey;
   background-color: $color--black;
@@ -31,7 +27,7 @@
 
 .resource {
   position: absolute;
-  bottom: 3px;
+  bottom: 0px;
   right: 3px;
 
   font-size: 11px;
