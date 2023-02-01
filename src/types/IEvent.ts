@@ -3,6 +3,7 @@ export interface IEvent {
   createdAt: string;
   createdAtFull: string;
   editedAt : string | null;
+  editedAtFull : string | null;
   title: string;
   description: string;
   beginDate: string;

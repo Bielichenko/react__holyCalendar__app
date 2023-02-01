@@ -13,6 +13,7 @@ import { useAppSelector } from '../../../hook';
 import { setUserEvents, setEditedEvent } from '../../../store/calendarSlice';
 import { IEvent } from '../../../types/IEvent';
 import { getDateString } from '../../../utils/helpers/getDateString';
+import { getCurrentTime } from '../../../utils/helpers/getCurrentTime';
 
 import './EditingEventForm.scss';
 
@@ -43,12 +44,14 @@ export const EditingEventForm: React.FC<props> = ({ editedEvent }) => {
     event.preventDefault();
 
     const dateString = getDateWithTimeString(new Date());
+    const editedAtFullTime = getCurrentTime();
 
     const updatedEvent: IEvent = {
       ...editedEvent,
       title,
       description,
       editedAt: dateString,
+      editedAtFull: editedAtFullTime,
       beginDate,
       beginTime,
     };

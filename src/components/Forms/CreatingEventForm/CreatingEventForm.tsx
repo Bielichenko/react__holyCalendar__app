@@ -45,6 +45,7 @@ export const CreatingEventForm = () => {
       beginDate,
       beginTime,
       editedAt: null,
+      editedAtFull: null,
     };
 
     const updatedEvents: IEvent[] = [...userEvents, newEvent];

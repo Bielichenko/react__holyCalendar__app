@@ -6,7 +6,7 @@ import { IDay } from '../../types/IDay';
 import { IEvent } from '../../types/IEvent';
 import { useAppDispatch } from '../../hook';
 import { setEditedEvent, setIsCreatingEvent } from '../../store/calendarSlice';
-import { isNewlyCreatedEvent } from '../../utils/helpers/isNewlyCreatedEvent';
+import { isNewlyCreatedOrEditedEvent } from '../../utils/helpers/isNewlyCreatedOrEditedEvent';
 
 import './DayCell.scss';
 
@@ -45,11 +45,11 @@ export const DayCell: React.FC<props> = ({ day }) => {
               key={event.id}
               className={cn(
                 'dayCell__eventTitle',
-                { 'dayCell__eventTitle--new': isNewlyCreatedEvent(event) },
+                { 'dayCell__eventTitle--new': isNewlyCreatedOrEditedEvent(event) },
                 { 'dayCell__eventTitle--notActual': !day.isFromSelectedMonth },
                 {
                   'dayCell__eventTitle--notActual--new':
-                  isNewlyCreatedEvent(event) && !day.isFromSelectedMonth,
+                  isNewlyCreatedOrEditedEvent(event) && !day.isFromSelectedMonth,
                 },
               )}
               onClick={() => eventSelectionHandler(event)}
