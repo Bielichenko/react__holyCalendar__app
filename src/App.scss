@@ -1,4 +1,5 @@
 @import "./utils/vars/vars.scss";
+@import "./utils/mixins/mixins.scss";
 
 .app {
   position: relative;
@@ -9,7 +10,11 @@
   align-items: center;
 
   min-height: 100vh;
-  padding: 10px;
+  padding: 20px;
+
+  @include onMobile {
+    padding: 10px 10px 15px;
+  };
 
   color: $color--grey;
   background-color: $color--black;
@@ -26,9 +31,14 @@
 
 .resource {
   position: absolute;
-  bottom: 0px;
-  right: 0px;
+  bottom: 3px;
+  right: 3px;
 
+  font-size: 11px;
   color: grey;
   text-decoration: none;
+
+  @include onMobile {
+    font-size: 8px;
+  }
 }

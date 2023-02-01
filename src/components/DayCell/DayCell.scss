@@ -1,4 +1,5 @@
 @import "../../utils/vars/vars.scss";
+@import "../../utils/mixins/mixins.scss";
 
 .dayCell {
   width: 100%;
@@ -8,7 +9,7 @@
   background-color: $color--greyBold;
   border: 1px solid $color--grey;
 
-  @media (max-width: 500px) {
+  @include onMobile {
     font-size: 12px;
   }
 
