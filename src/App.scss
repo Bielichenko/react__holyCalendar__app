@@ -1,4 +1,4 @@
-@import './utils/vars/vars.scss';
+@import "./utils/vars/vars.scss";
 
 .app {
   position: relative;
@@ -8,7 +8,6 @@
   justify-content: center;
   align-items: center;
 
-  min-width: 1000px;
   min-height: 100vh;
   padding: 10px;
 
@@ -20,7 +19,7 @@
     display: flex;
     justify-content: space-between;
 
-    width: calc(7 * 110px + 2px);
+    width: 100%;
     margin-bottom: 10px;
   }
 }
@@ -33,4 +32,3 @@
   color: grey;
   text-decoration: none;
 }
-

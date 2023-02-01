@@ -1,12 +1,16 @@
 @import "../../utils/vars/vars.scss";
 
 .dayCell {
-  width: 110px;
-  height: 110px;
+  width: 100%;
+  height: 100%;
   padding: 4px;
 
   background-color: $color--greyBold;
   border: 1px solid $color--grey;
+
+  @media (max-width: 500px) {
+    font-size: 12px;
+  }
 
   &--notActual {
     filter: invert(75%);

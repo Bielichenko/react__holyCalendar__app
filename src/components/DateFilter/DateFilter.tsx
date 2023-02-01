@@ -102,7 +102,7 @@ export const DateFilter = () => {
           {isDatePicker && (
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <Grid container spacing={3}>
-                <Grid item xs={12} md={6}>
+                <Grid item>
                   <MonthPicker
                     date={datePicker}
                     minDate={minDate}
@@ -110,7 +110,7 @@ export const DateFilter = () => {
                     onChange={(newDate) => datePickerHandler(newDate)}
                   />
                 </Grid>
-                <Grid item xs={12} md={6}>
+                <Grid item>
                   <YearPicker
                     date={datePicker}
                     minDate={minDate}
