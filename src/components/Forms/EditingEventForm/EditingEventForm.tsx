@@ -66,22 +66,27 @@ export const EditingEventForm: React.FC<props> = ({ editedEvent }) => {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const datePickerHandler = (date: any) => {
-    const beginDateString = getDateString(date.$d);
+    if (date) {
+      const beginDateString = getDateString(date.$d);
 
-    setBeginDate(beginDateString);
+      setBeginDate(beginDateString);
+    }
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const timePickerHandler = (time: any) => {
-    const beginTimeString = getFullDateString(time.$d);
+  const timePickerHandler = (date: any) => {
+    if (date) {
+      const beginTimeString = getFullDateString(date.$d);
 
-    setBeginTime(beginTimeString);
+      setBeginTime(beginTimeString);
+    }
   };
 
   const deleteEvent = () => {
     const updatedEvents = userEvents.filter(event => event.id !== editedEvent.id);
 
     dispatch(setUserEvents(updatedEvents));
+    sendDataToServer(updatedEvents);
 
     closeForm();
   };
