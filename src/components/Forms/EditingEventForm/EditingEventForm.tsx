@@ -90,6 +90,20 @@ export const EditingEventForm: React.FC<props> = ({ editedEvent }) => {
 
     dispatch(setUserEvents(updatedEvents));
     sendDataToServer(updatedEvents);
+  };
+
+  const deleteEventHandler = () => {
+    const eventsWithDeletingEvent = userEvents.map((event: IEvent) => {
+      if (event.id !== editedEvent.id) {
+        return event;
+      }
+
+      return { ...event, isDeleting: true };
+    });
+
+    dispatch(setUserEvents(eventsWithDeletingEvent));
+
+    setTimeout(deleteEvent, 500);
 
     closeForm();
   };
@@ -100,8 +114,8 @@ export const EditingEventForm: React.FC<props> = ({ editedEvent }) => {
         <div className="editingEventForm__buttons">
           <div
             className="editingEventForm__bin"
-            onClick={() => deleteEvent()}
-            onKeyUp={() => deleteEvent()}
+            onClick={() => deleteEventHandler()}
+            onKeyUp={() => deleteEventHandler()}
             tabIndex={0}
             role="button"
           >

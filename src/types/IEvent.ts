@@ -8,4 +8,5 @@ export interface IEvent {
   description: string;
   beginDate: string;
   beginTime:string;
+  isDeleting: boolean;
 }

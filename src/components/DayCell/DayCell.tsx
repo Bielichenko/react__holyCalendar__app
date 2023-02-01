@@ -45,11 +45,16 @@ export const DayCell: React.FC<props> = ({ day }) => {
               key={event.id}
               className={cn(
                 'dayCell__eventTitle',
-                { 'dayCell__eventTitle--new': isNewlyCreatedOrEditedEvent(event) },
+                { 'dayCell__eventTitle--isNew': isNewlyCreatedOrEditedEvent(event) },
                 { 'dayCell__eventTitle--notActual': !day.isFromSelectedMonth },
                 {
-                  'dayCell__eventTitle--notActual--new':
+                  'dayCell__eventTitle--notActual--isNew':
                   isNewlyCreatedOrEditedEvent(event) && !day.isFromSelectedMonth,
+                },
+                { 'dayCell__eventTitle--isDeleting': event.isDeleting },
+                {
+                  'dayCell__eventTitle--notActual--isDeleting':
+                  event.isDeleting && !day.isFromSelectedMonth,
                 },
               )}
               onClick={() => eventSelectionHandler(event)}

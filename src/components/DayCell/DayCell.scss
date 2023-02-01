@@ -58,8 +58,14 @@
       box-shadow: 0px 0px 5px rgb(255, 255, 255);
     }
 
-    &--new {
-      animation: 1s ease-out 0s eventBirth;
+    &--isNew {
+      animation: 0.5s ease-out 0s eventBirth;
+      // animation-direction: reverse;
+    }
+
+    &--isDeleting {
+      animation: 0.5s ease-out 0s eventBirth;
+      animation-direction: reverse;
     }
 
     &--notActual {
@@ -72,8 +78,13 @@
         box-shadow: 0px 0px 5px rgb(40, 38, 38);
       }
 
-      &--new {
-        animation: 1s ease-out 0s eventBirthGrey;
+      &--isNew {
+        animation: 0.5s ease-out 0s eventBirthGrey;
+      }
+
+      &--isDeleting {
+        animation: 0.5s ease-out 0s eventBirthGrey;
+        animation-direction: reverse;
       }
     }
   }
@@ -81,6 +92,7 @@
 
 @keyframes eventBirth {
   from {
+    color: $color--greyBold;
     background-color: $color--greyBold;
     border: 1px solid $color--greyBold;
   }
@@ -92,6 +104,7 @@
 
 @keyframes eventBirthGrey {
   from {
+    color: $color--grey;
     background-color: $color--grey;
     border: 1px solid $color--grey;
   }
