@@ -1,10 +1,10 @@
 import { IDay } from '../../types/IDay';
 import { IEvent } from '../../types/IEvent';
+import { getDateString } from './getDateString';
 import { getDayOfWeekNumber } from './getDayOfWeekNumber';
-import { getFullDateString } from './getFullDateString';
 import { getMonthNumberString } from './getMonthNumberString';
 
-export function makeDayObject(
+export function createDayObject(
   dayDate: Date,
   userEvents: IEvent[],
   isFromSelectedMonth : boolean | undefined = undefined,
@@ -19,7 +19,7 @@ export function makeDayObject(
   const [dayOfWeekName, monthName] = dayArray;
   const dayOfWeekNumber = getDayOfWeekNumber(dayOfWeekName);
 
-  const dateString = getFullDateString(dayDate).split(' ')[0];
+  const dateString = getDateString(dayDate);
   const dayEvents = userEvents.filter((event: IEvent) => event.beginDate === dateString);
 
   const dayObject = {

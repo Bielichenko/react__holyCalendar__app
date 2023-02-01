@@ -14,6 +14,7 @@ import { setUserEvents, setEditedEvent } from '../../../store/calendarSlice';
 import { IEvent } from '../../../types/IEvent';
 
 import './EditingEventForm.scss';
+import { getDateString } from '../../../utils/helpers/getDateString';
 
 interface props {
   editedEvent: IEvent
@@ -65,7 +66,7 @@ export const EditingEventForm: React.FC<props> = ({ editedEvent }) => {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const datePickerHandler = (date: any) => {
-    const beginDateString = getFullDateString(date.$d).split(' ')[0];
+    const beginDateString = getDateString(date.$d);
 
     setBeginDate(beginDateString);
   };

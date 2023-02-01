@@ -25,5 +25,3 @@ export function createMonthObject(date: Date): IMonth {
     daysAmount,
   };
 }
-
-export {};

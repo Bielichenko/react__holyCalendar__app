@@ -1,7 +1,7 @@
 import { IDay } from '../../types/IDay';
 import { IEvent } from '../../types/IEvent';
 import { IMonth, IMonthSelected } from '../../types/IMonthSelected';
-import { makeDayObject } from './makeDateObject';
+import { createDayObject } from './createDayObject';
 
 export function getDaysFromMonth(
   month: IMonth | IMonthSelected,
@@ -38,7 +38,7 @@ export function getDaysFromMonth(
   for (let i = startNumber; i <= lastNumber; i += 1) {
     const dayDate = new Date(year, +month.monthIndex, i);
 
-    const dayObj = makeDayObject(dayDate, userEvents, isFromSelectedMonth);
+    const dayObj = createDayObject(dayDate, userEvents, isFromSelectedMonth);
 
     daysFromMonth.push(dayObj);
   }

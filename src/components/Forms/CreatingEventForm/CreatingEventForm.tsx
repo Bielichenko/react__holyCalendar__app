@@ -14,6 +14,7 @@ import { IEvent } from '../../../types/IEvent';
 import { setIsCreatingEvent, setUserEvents } from '../../../store/calendarSlice';
 
 import './CreatingEventForm.scss';
+import { getDateString } from '../../../utils/helpers/getDateString';
 
 export const CreatingEventForm = () => {
   const dispatch = useDispatch();
@@ -54,7 +55,7 @@ export const CreatingEventForm = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const datePickerHandler = (date: any) => {
     if (date) {
-      const beginDateString = getFullDateString(date.$d).split(' ')[0];
+      const beginDateString = getDateString(date.$d);
 
       setBeginDate(beginDateString);
     }
