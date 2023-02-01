@@ -7,14 +7,14 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { useDispatch } from 'react-redux';
-import { getFullDateString } from '../../../utils/helpers/getFullDateString';
+import { getDateWithTimeString } from '../../../utils/helpers/getDateWithTimeString';
 import { sendDataToServer } from '../../../utils/helpers/sendDataToServer';
 import { useAppSelector } from '../../../hook';
 import { setUserEvents, setEditedEvent } from '../../../store/calendarSlice';
 import { IEvent } from '../../../types/IEvent';
+import { getDateString } from '../../../utils/helpers/getDateString';
 
 import './EditingEventForm.scss';
-import { getDateString } from '../../../utils/helpers/getDateString';
 
 interface props {
   editedEvent: IEvent
@@ -42,7 +42,7 @@ export const EditingEventForm: React.FC<props> = ({ editedEvent }) => {
   const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
 
-    const dateString = getFullDateString(new Date());
+    const dateString = getDateWithTimeString(new Date());
 
     const updatedEvent: IEvent = {
       ...editedEvent,
@@ -76,7 +76,7 @@ export const EditingEventForm: React.FC<props> = ({ editedEvent }) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const timePickerHandler = (date: any) => {
     if (date) {
-      const beginTimeString = getFullDateString(date.$d);
+      const beginTimeString = getDateWithTimeString(date.$d);
 
       setBeginTime(beginTimeString);
     }

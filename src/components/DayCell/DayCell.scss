@@ -58,9 +58,39 @@
       box-shadow: 0px 0px 5px rgb(255, 255, 255);
     }
 
+    &--new {
+      animation: 1s ease-out 0s eventBirth;
+    }
+
     &--notActual {
-      filter: invert(100%);
+      filter: invert(75%);
       background-color: $color--greyBold;
+
+      &--new {
+        animation: 1s ease-out 0s eventBirthGrey;
+      }
     }
   }
 }
+
+@keyframes eventBirth {
+  from {
+    background-color: $color--greyBold;
+    border: 1px solid $color--greyBold;
+  }
+  to {
+    background-color: $color--green;
+    border: 1px solid $color--grey;
+  }
+}
+
+@keyframes eventBirthGrey {
+  from {
+    background-color: $color--grey;
+    border: 1px solid $color--grey;
+  }
+  to {
+    background-color: $color--greyBold;
+    border: 1px solid $color--grey;
+  }
+} 

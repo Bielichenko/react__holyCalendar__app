@@ -7,14 +7,15 @@ import Stack from '@mui/material/Stack';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
-import { getFullDateString } from '../../../utils/helpers/getFullDateString';
+import { getDateWithTimeString } from '../../../utils/helpers/getDateWithTimeString';
 import { sendDataToServer } from '../../../utils/helpers/sendDataToServer';
 import { useAppSelector } from '../../../hook';
 import { IEvent } from '../../../types/IEvent';
 import { setIsCreatingEvent, setUserEvents } from '../../../store/calendarSlice';
+import { getDateString } from '../../../utils/helpers/getDateString';
+import { getCurrentTime } from '../../../utils/helpers/getCurrentTime';
 
 import './CreatingEventForm.scss';
-import { getDateString } from '../../../utils/helpers/getDateString';
 
 export const CreatingEventForm = () => {
   const dispatch = useDispatch();
@@ -32,13 +33,15 @@ export const CreatingEventForm = () => {
     event.preventDefault();
 
     const uniqueId = `id${Math.random().toString(16).slice(2)}`;
-    const fullDateString = getFullDateString(new Date());
+    const fullDateString = getDateWithTimeString(new Date());
+    const createdAtFullTime = getCurrentTime();
 
     const newEvent = {
       id: uniqueId,
       title,
       description,
       createdAt: fullDateString,
+      createdAtFull: createdAtFullTime,
       beginDate,
       beginTime,
       editedAt: null,
@@ -64,7 +67,7 @@ export const CreatingEventForm = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const dateTimeHandler = (date: any) => {
     if (date) {
-      const beginTimeString = getFullDateString(date.$d);
+      const beginTimeString = getDateWithTimeString(date.$d);
 
       setBeginTime(beginTimeString);
     }

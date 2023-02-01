@@ -4,7 +4,10 @@ import { getDaysFromMonth } from './getDaysFromMonth';
 
 const daysAmountInCalendar = 42;
 
-export function getDaysList(selectedMonth: IMonthSelected | null, userEvents: IEvent[]) {
+export function getDaysListForCalendarGrid(
+  selectedMonth: IMonthSelected | null,
+  userEvents: IEvent[],
+) {
   if (!selectedMonth) {
     return [];
   }

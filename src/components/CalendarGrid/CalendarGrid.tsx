@@ -1,5 +1,5 @@
 import React from 'react';
-import { getDaysList } from '../../utils/helpers/getDaysList';
+import { getDaysListForCalendarGrid } from '../../utils/helpers/getDaysListForCalendarGrid';
 import { useAppSelector } from '../../hook';
 import { IDay } from '../../types/IDay';
 import { DayCell } from '../DayCell/DayCell';
@@ -11,7 +11,7 @@ export const CalendarGrid = () => {
   const selectedMonth = useAppSelector(state => state.calendar.selectedMonth);
   const userEvents = useAppSelector(state => state.calendar.userEvents);
   const editedEvent = useAppSelector(state => state.calendar.editedEvent);
-  const daysListForCalendar = getDaysList(selectedMonth, userEvents);
+  const daysListForCalendar = getDaysListForCalendarGrid(selectedMonth, userEvents);
 
   return (
     <ul className="calendarGrid">
