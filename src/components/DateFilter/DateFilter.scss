@@ -1,6 +1,8 @@
 @import '../../utils/vars/vars.scss';
 
 .dateFilter {
+  position: relative;
+
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -59,8 +61,8 @@
   &__datePicker {
     position: absolute;
     z-index: 1;
-    top: 10%;
-    right: 15%;
+    top: 40px;
+    right: 0px;
 
     width: 600px;
 
