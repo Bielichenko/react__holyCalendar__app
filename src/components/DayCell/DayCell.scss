@@ -6,8 +6,26 @@
   height: 100%;
   padding: 4px;
 
+  overflow-x: hidden;
+
   background-color: $color--greyBold;
   border: 1px solid $color--grey;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $color--greyBold;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 
   @include onMobile {
     font-size: 12px;
@@ -40,11 +58,9 @@
   }
 
   &__eventTitle {
+    max-width: 100%;
     padding: 4px;
     margin-bottom: 1px;
-
-    max-width: 100%;
-    overflow: hidden;
 
     background-color: $color--green;
     border-radius: 10px;
@@ -60,7 +76,6 @@
 
     &--isNew {
       animation: 0.5s ease-out 0s eventBirth;
-      // animation-direction: reverse;
     }
 
     &--isDeleting {
